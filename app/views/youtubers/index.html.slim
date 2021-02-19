@@ -1,0 +1,26 @@
+h1 Youtubers#index
+
+= render partial: "login_logout_buttons"
+
+- if user_signed_in?
+    p= current_user.id
+- else
+    p ログインしていない
+
+.mb-3
+table.table.table-hover
+    thead.thead-default
+        tr
+            th= YouTuber.human_attribute_name(:name)
+            th= YouTuber.human_attribute_name(:channel_id)
+            th= YouTuber.human_attribute_name(:title)
+            th= YouTuber.human_attribute_name(:detail)
+            th= YouTuber.human_attribute_name(:due)
+        tbody
+            - @youtubers.each do |youtuber|
+                tr
+                    td= link_to youtuber.name, youtuber_path(youtuber)
+                    td= youtuber.channel_id
+                    td= youtuber.title
+                    td= youtuber.detail
+                    td= youtuber.due
