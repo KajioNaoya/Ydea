@@ -20,6 +20,18 @@ table.table.table-hover
             th= YouTuber.human_attribute_name(:due)
             td= @youtuber.due
 
+div class="input_area"
+    = form_with model: @new_idea, url: ideas_path, local: true do |f|
+        .form-group
+            = f.label :title
+            = f.text_field :title, class: 'form-control'
+        .form-group
+            = f.label :detail
+            = f.text_field :detail, class: 'form-control'
+        = f.hidden_field :you_tuber_id, value: @youtuber.id
+        = f.submit "アイデアを投稿", class: 'btn btn-primary'
+
+
 .mb-3
 table.table.table-hover
     thead.thead-default
