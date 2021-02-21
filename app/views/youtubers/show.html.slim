@@ -43,3 +43,7 @@ table.table.table-hover
                 tr
                     td= idea.title
                     td= idea.detail
+                    - if current_user.already_liked?(idea)
+                        td = link_to  "いいね取り消し", idea_like_path(idea), method: :delete, class: 'btn btn-primary'
+                    - else 
+                        td = link_to  "いいね", idea_likes_path(idea), method: :post, class: 'btn btn-primary'
