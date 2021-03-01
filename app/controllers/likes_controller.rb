@@ -1,4 +1,6 @@
 class LikesController < ApplicationController
+    before_action :authenticate_user!
+    
     def create
         @like = current_user.likes.create(idea_id: params[:idea_id])
         head :no_content
