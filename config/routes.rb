@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    resources :youtubers
+  end
   devise_for :users
   root to: 'youtubers#index'
 

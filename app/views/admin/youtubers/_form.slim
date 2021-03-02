@@ -1,0 +1,20 @@
+.nav.justify-content-end
+    = link_to  "一覧", admin_youtubers_path, class: 'nav-link'
+
+= form_with model: [:admin, @youtuber], url: admin_youtuber_path, local: true do |f|
+    .form-group 
+        = f.label :name, '名前'
+        = f.text_field :name, class: 'form-control'
+    .form-group 
+        = f.label :channel_id, 'チャンネルid'
+        = f.text_field :channel_id, class: 'form-control'
+    .form-group 
+        = f.label :title, 'タイトル'
+        = f.text_field :title, class: 'form-control'
+    .form-group 
+        = f.label :detail, '詳細'
+        = f.text_field :detail, class: 'form-control'
+    .form-group 
+        = f.label :due, '募集期限'
+        = f.date_field :due, class: 'form-control'
+    = f.submit '登録する', class: 'btn btn-primary'

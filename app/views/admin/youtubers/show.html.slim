@@ -1,0 +1,23 @@
+h1 Admin::Youtubers#show
+.nav.justify-content-end
+ = link_to '一覧', admin_youtubers_path, class: 'nav-link'
+table.table.table-hover
+    tbody
+        tr
+            th= YouTuber.human_attribute_name(:id)
+            td= @youtuber.id
+        tr
+            th= YouTuber.human_attribute_name(:name)
+            td= @youtuber.name
+        tr
+            th= YouTuber.human_attribute_name(:title)
+            td= @youtuber.title
+        tr
+            th= YouTuber.human_attribute_name(:detail)
+            td= @youtuber.detail
+        tr
+            th= YouTuber.human_attribute_name(:due)
+            td= @youtuber.due
+
+= link_to  "編集", edit_admin_youtuber_path(@youtuber), class: 'btn btn-primary mr-3'
+= link_to  "削除", admin_youtuber_path(@youtuber), method: :delete, data: {confirm: "削除します。よろしいですか？"}, class: 'btn btn-danger'

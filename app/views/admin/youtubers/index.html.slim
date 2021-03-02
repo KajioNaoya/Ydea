@@ -1,23 +1,18 @@
-h1 Youtubers#index
+h1 Admin::Youtubers#index
 
-= render partial: "login_logout_buttons"
-
-- if user_signed_in?
-    p= current_user.id
-    - if current_user.admin?
-        p= link_to  "youtuber編集モード", admin_youtubers_path, class: 'nav-link' 
-- else
-    p ログインしていない
+= link_to  "新規登録", new_admin_youtuber_path, class: 'btn btn-primary'
+p= link_to  "通常モード", youtubers_path, class: 'nav-link'
 
 .mb-3
 table.table.table-hover
-    thead.thead-default
+    thead.thead-default 
         tr
             th= YouTuber.human_attribute_name(:name)
             th= YouTuber.human_attribute_name(:channel_id)
             th= YouTuber.human_attribute_name(:title)
             th= YouTuber.human_attribute_name(:detail)
             th= YouTuber.human_attribute_name(:due)
+            th
         tbody
             - @youtubers.each do |youtuber|
                 tr
@@ -26,3 +21,6 @@ table.table.table-hover
                     td= youtuber.title
                     td= youtuber.detail
                     td= youtuber.due
+                    td 
+                        = link_to  "編集", edit_admin_youtuber_path(youtuber), class: 'btn btn-primary mr-3'
+                        = link_to  "削除", admin_youtuber_path(youtuber), method: :delete, data: {confirm: "削除します。よろしいですか？"}, class: 'btn btn-danger'  
