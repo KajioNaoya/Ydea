@@ -45,10 +45,8 @@ table.table.table-hover
                     td= idea.detail
                     td
                         span id="fav-count#{idea.id}" = idea.liked_users.count 
-                        //= link_to "いいね取り消し", idea_like_path(idea), remote: true, method: :delete, style: (current_user.already_liked?(idea) ? 'display:inline' : 'display:none'), id: "cancel_fav#{idea.id}", class: 'btn btn-primary fav'
-                        //= link_to "いいね", idea_likes_path(idea), remote: true, method: :post, style: (current_user.already_liked?(idea) ? 'display:none' : 'display:inline'), id: "fav#{idea.id}", class: 'btn btn-primary fav'
                         - if user_signed_in?
                             = link_to fa_icon("heart"), idea_like_path(idea), remote: true, method: :delete, style: (current_user.already_liked?(idea) ? 'display:inline' : 'display:none'), id: "cancel_fav#{idea.id}", class: 'fav'
                             = link_to fa_icon("heart-o"), idea_likes_path(idea), remote: true, method: :post, style: (current_user.already_liked?(idea) ? 'display:none' : 'display:inline'), id: "fav#{idea.id}", class: 'fav'
                         - else 
-                            = link_to fa_icon("heart-o"), idea_likes_path(idea), remote: true, method: :post, style: 'display:inline', id: "fav#{idea.id}", class: 'fav'
+                            = link_to fa_icon("heart-o"), idea_likes_path(idea), method: :post, style: 'display:inline', id: "fav#{idea.id}", class: 'fav'
