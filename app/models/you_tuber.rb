@@ -5,4 +5,5 @@ class YouTuber < ApplicationRecord
     validates :channel_id, presence: true
 
     scope :remove_out_of_date, -> { where('due >= ?', Date.today) }
+    scope :old_to_top, -> {order(:due)}
 end

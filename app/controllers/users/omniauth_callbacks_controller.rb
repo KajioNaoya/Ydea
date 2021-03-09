@@ -4,6 +4,7 @@ class Users::OmniauthCallbacksController < ApplicationController
     end
     
     def failure
+      logger.debug 'failure 呼ばれたよ'
         redirect_to new_user_registration_url
     end
     
@@ -12,6 +13,7 @@ class Users::OmniauthCallbacksController < ApplicationController
     def callback_from(provider)
         provider = provider.to_s
         @user = User.find_or_create_from_auth(request.env['omniauth.auth'].except('extra'))
+        logger.debug 'callback 呼ばれたよ'
     
         if @user.persisted? # DBに保存済みかどうかを判定
           flash[:notice] = I18n.t('devise.omniauth_callbacks.success', kind: provider.capitalize)

@@ -14,12 +14,12 @@ class User < ApplicationRecord
   end
 
   def self.find_or_create_from_auth(auth)
+    logger.debug 'find or create 呼ばれたよ'
     find_or_create_by(email: auth.info.email) do |user|
       user.password = Devise.friendly_token[0, 20]
       user.name = auth.info.name
       user.provider = auth.provider
       user.uid = auth.uid
-      #user.skip_confirmation! いる？
     end
   end
 end

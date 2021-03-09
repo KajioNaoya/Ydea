@@ -2,7 +2,7 @@ class YoutubersController < ApplicationController
   #before_action :authenticate_user!
 
   def index
-    @youtubers = YouTuber.all.remove_out_of_date
+    @youtubers = YouTuber.all.remove_out_of_date.old_to_top
   end
 
   def show
