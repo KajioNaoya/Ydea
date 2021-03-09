@@ -22,7 +22,8 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Sign up" %><br />
+    <%= link_to "Twitterログイン",  user_twitter_omniauth_authorize_path, method: :post %>
   </div>
 <% end %>
 

@@ -19,5 +19,16 @@ table.table.table-hover
             th= YouTuber.human_attribute_name(:due)
             td= @youtuber.due
 
+table.table.table-hover
+    thead.thead-default
+        tr
+            th= Idea.human_attribute_name(:title)
+            th= Idea.human_attribute_name(:detail)
+        tbody
+            - @youtuber.ideas.each do |idea|
+                tr
+                    td= idea.title
+                    td= idea.detail
+
 = link_to  "編集", edit_admin_youtuber_path(@youtuber), class: 'btn btn-primary mr-3'
 = link_to  "削除", admin_youtuber_path(@youtuber), method: :delete, data: {confirm: "削除します。よろしいですか？"}, class: 'btn btn-danger'

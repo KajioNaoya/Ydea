@@ -10,22 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_02_053146) do
+ActiveRecord::Schema.define(version: 2021_03_08_042837) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "ideas", force: :cascade do |t|
     t.string "title"
     t.text "detail"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id", null: false
-    t.integer "you_tuber_id"
+    t.integer "user_id"
+    t.bigint "you_tuber_id"
     t.index ["user_id"], name: "index_ideas_on_user_id"
     t.index ["you_tuber_id"], name: "index_ideas_on_you_tuber_id"
   end
 
   create_table "likes", force: :cascade do |t|
-    t.integer "idea_id"
-    t.integer "user_id"
+    t.bigint "idea_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["idea_id"], name: "index_likes_on_idea_id"
@@ -41,6 +44,9 @@ ActiveRecord::Schema.define(version: 2021_03_02_053146) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "admin", default: false, null: false
+    t.string "name"
+    t.string "provider"
+    t.string "uid"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -55,4 +61,8 @@ ActiveRecord::Schema.define(version: 2021_03_02_053146) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "ideas", "users"
+  add_foreign_key "ideas", "you_tubers"
+  add_foreign_key "likes", "ideas"
+  add_foreign_key "likes", "users"
 end

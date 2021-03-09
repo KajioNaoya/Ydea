@@ -1,0 +1,18 @@
+h1 Users#show
+p = @user.email
+p = @user.id
+
+h3 投稿したアイデア一覧
+.mb-3
+table.table.table-hover
+    thead.thead-default
+        tr
+            th= Idea.human_attribute_name(:you_tuber)
+            th= Idea.human_attribute_name(:title)
+            th= Idea.human_attribute_name(:detail)
+        tbody
+            - @ideas.each do |idea|
+                tr
+                    td= idea.you_tuber.name
+                    td= idea.title
+                    td= idea.detail

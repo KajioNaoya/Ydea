@@ -6,8 +6,8 @@ ruby '2.7.2'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.4'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3', group: [:development, :test]
-gem 'pg', group: :production #heroku本番環境ではsqlite3は使えない
+# gem 'sqlite3', group: [:development, :test]
+gem 'pg'# , group: :production #heroku本番環境ではsqlite3は使えない
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -66,5 +66,9 @@ gem 'slim-rails'
 gem 'html2slim'
 gem 'bootstrap'
 gem 'rails-i18n'
-gem 'devise'
 gem 'font-awesome-rails'
+gem 'high_voltage'
+gem 'devise', git: "https://github.com/heartcombo/devise"
+gem 'omniauth', '1.9.1'
+# gem "omniauth-rails_csrf_protection"
+gem 'omniauth-twitter'

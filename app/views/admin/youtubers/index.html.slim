@@ -16,7 +16,7 @@ table.table.table-hover
         tbody
             - @youtubers.each do |youtuber|
                 tr
-                    td= link_to youtuber.name, youtuber_path(youtuber)
+                    td= link_to youtuber.name, admin_youtuber_path(youtuber)
                     td= youtuber.channel_id
                     td= youtuber.title
                     td= youtuber.detail
