@@ -2,7 +2,8 @@ class YoutubersController < ApplicationController
   #before_action :authenticate_user!
 
   def index
-    @youtubers = YouTuber.all.remove_out_of_date.old_to_top
+    @q = YouTuber.all.remove_out_of_date.ransack(params[:q])
+    @youtubers = @q.result(distinct: true).old_to_top.page(params[:page])
   end
 
   def show

@@ -11,4 +11,5 @@ class LikesController < ApplicationController
         @like.destroy
         head :no_content
     end
+
 end

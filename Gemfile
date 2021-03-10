@@ -72,3 +72,5 @@ gem 'devise', git: "https://github.com/heartcombo/devise"
 gem 'omniauth', '1.9.1'
 # gem "omniauth-rails_csrf_protection"
 gem 'omniauth-twitter'
+gem 'ransack'
+gem 'kaminari'

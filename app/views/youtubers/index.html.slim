@@ -9,6 +9,18 @@ h1 Youtubers#index
 - else
     p ログインしていない
 
+= search_form_for @q, url: youtubers_path, class: 'mb-5' do |f|
+    .form-group.row 
+        = f.label :name_cont, '名前', class: 'col-sm-2 col-form-label'
+        .col-sm-10 
+            = f.search_field :name_cont, class: 'form-control'
+    .form-group
+        = f.submit class: 'btn btn-outline-primary' 
+
+.mb-3
+    = paginate @youtubers
+    = page_entries_info @youtubers
+
 .mb-3
 table.table.table-hover
     thead.thead-default

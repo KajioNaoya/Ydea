@@ -6,4 +6,12 @@ class YouTuber < ApplicationRecord
 
     scope :remove_out_of_date, -> { where('due >= ?', Date.today) }
     scope :old_to_top, -> {order(:due)}
+
+    def self.ransackable_attributes(auth_object = nil)
+        %w[name]
+    end
+
+    def self.ransackable_associations(auth_object = nil)
+        []
+    end
 end
