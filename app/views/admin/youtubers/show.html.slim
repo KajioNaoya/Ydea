@@ -29,6 +29,8 @@ table.table.table-hover
                 tr
                     td= idea.title
                     td= idea.detail
+                    td 
+                        = link_to "削除", idea, method: :delete, data: { confirm: "削除します。よろしいですか？"}, class: 'btn btn-danger' 
 
 = link_to  "編集", edit_admin_youtuber_path(@youtuber), class: 'btn btn-primary mr-3'
 = link_to  "削除", admin_youtuber_path(@youtuber), method: :delete, data: {confirm: "削除します。よろしいですか？"}, class: 'btn btn-danger'

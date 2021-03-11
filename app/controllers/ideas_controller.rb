@@ -11,12 +11,17 @@ class IdeasController < ApplicationController
   def create
     @idea = Idea.new(idea_params)
     @idea.user = current_user
-    @idea.save!
-    redirect_to youtuber_path(@idea.you_tuber_id)
-
+    @idea.save
+    redirect_to youtuber_path(@idea.you_tuber_id)      
   end
 
   def edit
+  end
+
+  def destroy
+    idea = Idea.find(params[:id])
+    idea.destroy
+    redirect_to session[:previous_url] || root_path
   end
 
   private
