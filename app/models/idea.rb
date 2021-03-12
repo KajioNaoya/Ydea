@@ -7,4 +7,6 @@ class Idea < ApplicationRecord
     has_many :liked_users, through: :likes, source: :user
 
     validates :title, presence: true
+
+    scope :recent, -> {order(created_at: :desc)}
 end

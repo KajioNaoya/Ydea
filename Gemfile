@@ -69,6 +69,8 @@ gem 'rails-i18n'
 gem 'font-awesome-rails'
 gem 'high_voltage'
 gem 'devise', git: "https://github.com/heartcombo/devise"
+gem 'devise-i18n'
+gem 'devise-i18n-views'
 gem 'omniauth', '1.9.1'
 # gem "omniauth-rails_csrf_protection"
 gem 'omniauth-twitter'

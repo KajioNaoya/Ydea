@@ -4,23 +4,8 @@ h1 Youtubers#show
 
 .nav.justify-content-end
  = link_to '一覧', youtubers_path, class: 'nav-link'
-table.table.table-hover
-    tbody
-        tr
-            th= YouTuber.human_attribute_name(:id)
-            td= @youtuber.id
-        tr
-            th= YouTuber.human_attribute_name(:name)
-            td= @youtuber.name
-        tr
-            th= YouTuber.human_attribute_name(:title)
-            td= @youtuber.title
-        tr
-            th= YouTuber.human_attribute_name(:detail)
-            td= @youtuber.detail
-        tr
-            th= YouTuber.human_attribute_name(:due)
-            td= @youtuber.due
+
+= render partial: "youtuber_info", locals: {youtuber: @youtuber}
 
 div class="input_area"
     = form_with model: @new_idea, url: ideas_path, local: true do |f|
