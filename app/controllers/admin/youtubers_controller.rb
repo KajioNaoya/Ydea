@@ -44,7 +44,7 @@ class Admin::YoutubersController < ApplicationController
 
   private
   def youtuber_params
-    params.require(:you_tuber).permit(:name, :channel_id, :title, :detail, :due)
+    params.require(:you_tuber).permit(:name, :channel_id, :title, :detail, :due, :icon)
   end
 
   def require_admin

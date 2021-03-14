@@ -18,6 +18,12 @@ table.table.table-hover
         tr
             th= YouTuber.human_attribute_name(:due)
             td= @youtuber.due
+        tr
+            th= YouTuber.human_attribute_name(:icon)
+            - if @youtuber.icon?
+                td= image_tag @youtuber.icon.url
+            - else 
+                td= "画像なし"
 
 table.table.table-hover
     thead.thead-default

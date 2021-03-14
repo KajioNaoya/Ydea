@@ -14,4 +14,6 @@ class YouTuber < ApplicationRecord
     def self.ransackable_associations(auth_object = nil)
         []
     end
+
+    mount_uploader :icon, IconUploader
 end
