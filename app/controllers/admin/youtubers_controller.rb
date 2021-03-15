@@ -7,6 +7,8 @@ class Admin::YoutubersController < ApplicationController
 
   def create
     @youtuber = YouTuber.new(youtuber_params)
+    @youtuber.fetch_icon_and_banner
+    logger.debug @youtuber.icon
     if @youtuber.save
       redirect_to admin_youtuber_url(@youtuber), notice: "登録しました。"
     else
@@ -28,6 +30,7 @@ class Admin::YoutubersController < ApplicationController
 
   def update
     @youtuber = YouTuber.find(params[:id])
+    @youtuber.fetch_icon_and_banner
 
     if @youtuber.update(youtuber_params)
       redirect_to admin_youtuber_url(@youtuber), notice: '更新しました。'

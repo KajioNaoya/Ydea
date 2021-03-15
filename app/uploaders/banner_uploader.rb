@@ -1,6 +1,6 @@
-class IconUploader < CarrierWave::Uploader::Base
+class BannerUploader < CarrierWave::Uploader::Base
   attr_accessor :object
-  
+
   # Include RMagick or MiniMagick support:
   include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
@@ -14,6 +14,11 @@ class IconUploader < CarrierWave::Uploader::Base
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
+
+  #def initialize(object)
+   # super
+    #@object = object
+  #end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url(*args)
@@ -47,15 +52,14 @@ class IconUploader < CarrierWave::Uploader::Base
   #   "something.jpg" if original_filename
   # end
 
-#上限変更
-  #process :resize_to_limit => [700, 700]
+  #上限変更
+  process :resize_to_limit => [700, 700]
 
 #JPGで保存
-  #process :convert => 'jpg'
+  process :convert => 'jpg'
 
 #サムネイルを生成
-  #version :thumb do
-  #  process :resize_to_limit => [300, 300]
-  #end
-
+  version :thumb do
+    process :resize_to_limit => [300, 300]
+  end
 end
