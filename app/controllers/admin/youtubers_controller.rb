@@ -8,7 +8,6 @@ class Admin::YoutubersController < ApplicationController
   def create
     @youtuber = YouTuber.new(youtuber_params)
     @youtuber.fetch_icon_and_banner
-    logger.debug @youtuber.icon
     if @youtuber.save
       redirect_to admin_youtuber_url(@youtuber), notice: "登録しました。"
     else
@@ -47,7 +46,7 @@ class Admin::YoutubersController < ApplicationController
 
   private
   def youtuber_params
-    params.require(:you_tuber).permit(:name, :channel_id, :title, :detail, :due, :icon)
+    params.require(:you_tuber).permit(:name, :channel_id, :title, :detail, :due, :icon, :banner)
   end
 
   def require_admin

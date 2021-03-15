@@ -30,19 +30,16 @@ class YouTuber < ApplicationRecord
         youtube = Google::Apis::YoutubeV3::YouTubeService.new
         youtube.key = "AIzaSyBZ70KKgOctaypH8hHAuhDXga0KpLbyZzU"
         logger.debug "キーはこちら！！"
-        logger.debug ENV["YOUTUBE_API_KEY"]
+        logger.debug ENV["YOUTUBE_API_KEY"] #ここやばい
 
         response1 = youtube.list_channels("snippet", options)
-        @channel_icon = response1.items[0].snippet.thumbnails.high
-        iconUploader = IconUploader.new(self)
-        iconUploader.store!(@channel_icon)
+        @channel_icon_url = response1.items[0].snippet.thumbnails.high.url
+        self.remote_icon_url = @channel_icon_url
         
         response2 = youtube.list_channels("brandingSettings", options)
         @channel_banner_url = response2.items[0].branding_settings.image.banner_image_url
+        logger.debug "urlは#{response2.items[0].branding_settings.image.banner_image_url.class}"
         self.remote_banner_url = @channel_banner_url
 
-        self.name = response1.items[0].snippet.title
-
-        logger.debug self.icon.file.nil?
     end
 end
