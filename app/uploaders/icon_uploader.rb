@@ -47,15 +47,10 @@ class IconUploader < CarrierWave::Uploader::Base
   #   "something.jpg" if original_filename
   # end
 
-#上限変更
-  #process :resize_to_limit => [700, 700]
+#サイズ変更
+  process :resize_to_fill => [200, 200, "Center"]
 
 #JPGで保存
-  #process :convert => 'jpg'
-
-#サムネイルを生成
-  #version :thumb do
-  #  process :resize_to_limit => [300, 300]
-  #end
+  process :convert => 'jpg'
 
 end

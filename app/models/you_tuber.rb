@@ -33,12 +33,11 @@ class YouTuber < ApplicationRecord
         logger.debug ENV["YOUTUBE_API_KEY"] #ここやばい
 
         response1 = youtube.list_channels("snippet", options)
-        @channel_icon_url = response1.items[0].snippet.thumbnails.high.url
+        @channel_icon_url = response1.items.present? ? response1.items[0].snippet.thumbnails.high.url : nil
         self.remote_icon_url = @channel_icon_url
         
         response2 = youtube.list_channels("brandingSettings", options)
-        @channel_banner_url = response2.items[0].branding_settings.image.banner_image_url
-        logger.debug "urlは#{response2.items[0].branding_settings.image.banner_image_url.class}"
+        @channel_banner_url = response2.items.present? ? response2.items[0].branding_settings.image.banner_image_url : nil
         self.remote_banner_url = @channel_banner_url
 
     end

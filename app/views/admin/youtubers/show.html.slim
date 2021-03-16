@@ -23,13 +23,13 @@ table.table.table-hover
             - if @youtuber.icon?
                 td= image_tag @youtuber.icon.url
             - else 
-                td= image_tag "/noimage.png"
+                td= image_tag "/noimage.jpg"
         tr
             th= YouTuber.human_attribute_name(:banner)
             - if @youtuber.banner?
                 td= image_tag @youtuber.banner.url
             - else 
-                td= image_tag "/noimage.png"
+                td= image_tag "/noimage.jpg"
 
 table.table.table-hover
     thead.thead-default

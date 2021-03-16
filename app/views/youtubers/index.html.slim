@@ -38,3 +38,13 @@ table.table.table-hover
                     td= youtuber.title
                     td= youtuber.detail
                     td= youtuber.due
+
+- @youtubers.each do |youtuber|
+    div class='youtuber_box clearfix'
+        div class='float-left' = image_tag youtuber.icon.url || "/noimage.jpg"
+        p class="float-left" = link_to youtuber.name, youtuber_path(youtuber)
+        div class='due_and_number float-left'
+            p= youtuber.due 
+            p= youtuber.ideas.count
+        p class="float-left" = youtuber.title 
+
