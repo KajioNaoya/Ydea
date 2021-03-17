@@ -40,11 +40,13 @@ table.table.table-hover
                     td= youtuber.due
 
 - @youtubers.each do |youtuber|
-    div class='youtuber_box clearfix'
-        div class='float-left' = image_tag youtuber.icon.url || "/noimage.jpg"
-        p class="float-left" = link_to youtuber.name, youtuber_path(youtuber)
-        div class='due_and_number float-left'
-            p= youtuber.due 
-            p= youtuber.ideas.count
-        p class="float-left" = youtuber.title 
+    div class='box clearfix border rounded m-3 d-flex align-items-center'
+        = image_tag youtuber.icon.url || "/noimage.jpg", class: 'float-left rounded-circle col-1'
+        span class="float-left text-truncate col-3" = link_to youtuber.name, youtuber_path(youtuber)
+        span class='due_and_number float-left col-3 d-flex align-items-center'
+            span
+                span = "期限: #{youtuber.due}"
+                br
+                span = "投稿: #{youtuber.ideas.count}件"
+        span class="float-left text-truncate col-5" = youtuber.title 
 
