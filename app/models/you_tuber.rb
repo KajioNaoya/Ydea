@@ -37,7 +37,7 @@ class YouTuber < ApplicationRecord
         self.remote_icon_url = @channel_icon_url
         
         response2 = youtube.list_channels("brandingSettings", options)
-        @channel_banner_url = response2.items.present? ? response2.items[0].branding_settings.image.banner_image_url : nil
+        @channel_banner_url = response2.items.present? ? response2.items[0].branding_settings.image.banner_external_url : nil
         self.remote_banner_url = @channel_banner_url
 
     end
