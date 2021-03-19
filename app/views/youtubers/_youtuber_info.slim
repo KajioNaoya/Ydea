@@ -1,4 +1,4 @@
-table.table.table-hover
+/table.table.table-hover
     tbody
         tr
             th= YouTuber.human_attribute_name(:id)
@@ -15,4 +15,19 @@ table.table.table-hover
         tr
             th= YouTuber.human_attribute_name(:due)
             td= youtuber.due
+div class='d-flex flex-column'
+    div class='banner-box col-12'
+        - if youtuber.banner.present?
+            = image_tag youtuber.banner.url, class: 'banner'
+    div class='p-3 d-flex info-box'
+        = image_tag youtuber.icon.url || "/noimage.jpg", class: 'rounded-circle col-2'
+        div class='d-flex flex-column justify-content-between p-3'
+            h3 class='' = youtuber.name
+            h4 class='' = youtuber.title
+        p class='ml-auto' = "掲載期限：#{youtuber.due}"
+        
+    p class='p-3 pl-5 detail' = youtuber.detail
+    
+
+
 

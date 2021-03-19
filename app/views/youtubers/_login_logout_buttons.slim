@@ -1,4 +1,4 @@
-div.text-right
+div.text-right.p-3
   - if user_signed_in?
     = link_to  "ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-primary mr-3'
     = link_to  "マイページ", user_path, class: 'btn btn-primary mr-3'
