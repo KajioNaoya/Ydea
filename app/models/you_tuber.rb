@@ -3,7 +3,7 @@ require 'open-uri'
 
 class YouTuber < ApplicationRecord
 
-    has_many :ideas
+    has_many :ideas, dependent: :destroy
 
     validates :name, presence: true
     validates :channel_id, presence: true
