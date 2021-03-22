@@ -20,9 +20,11 @@ div class='d-flex flex-column'
         div class='banner-box col-12'
             = image_tag youtuber.banner.url, class: 'banner'
     div class='p-3 d-flex info-box'
-        = image_tag youtuber.icon.url || "/noimage.jpg", class: 'rounded-circle col-2'
+        = link_to "https://www.youtube.com/channel/#{youtuber.channel_id}", target: "_blank", class: 'col-2'
+            = image_tag youtuber.icon.url || "/noimage.jpg", class: 'rounded-circle', width: '100%'
         div class='d-flex flex-column justify-content-between p-3'
-            h3 class='' = youtuber.name
+            = link_to "https://www.youtube.com/channel/#{youtuber.channel_id}"
+                h3 = youtuber.name
             h4 class='' = youtuber.title
         p class='ml-auto' = "掲載期限：#{youtuber.due}"
         

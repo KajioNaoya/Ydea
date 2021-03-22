@@ -8,7 +8,7 @@ class YoutubersController < ApplicationController
 
   def show
     @youtuber = YouTuber.find(params[:id])
-    @ideas = @youtuber.ideas
+    @ideas = @youtuber.ideas.page(params[:page])
     @new_idea = Idea.new
   end
 
