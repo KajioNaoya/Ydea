@@ -1,5 +1,6 @@
 class YoutubersController < ApplicationController
   #before_action :authenticate_user!
+  layout 'standard_header'
 
   def index
     @q = YouTuber.all.remove_out_of_date.ransack(params[:q])

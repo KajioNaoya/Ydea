@@ -1,16 +1,12 @@
-= render partial: "login_logout_buttons"
-= render partial: "header" 
-
 - if user_signed_in?
     - if current_user.admin?
         p= link_to  "youtuber編集モード", admin_youtubers_path, class: 'nav-link' 
 
-= search_form_for @q, url: youtubers_path, class: 'mb-5' do |f|
-    .form-group.row 
-        = f.label :name_cont, 'チャンネル名', class: 'col-sm-2 col-form-label'
-        .col-sm-9
-            = f.search_field :name_cont, class: 'form-control'
-        = f.submit class: 'col-sm-1 btn btn-outline-primary' 
+= search_form_for @q, url: youtubers_path, class: 'mt-5 mb-5 container' do |f|
+    .form-group.row
+        = f.label :name_cont, 'チャンネル名', class: 'col-md-3 col-form-label mt-2'
+        = f.search_field :name_cont, class: 'col-md-8 form-control mt-2'
+        = f.submit class: 'btn btn-outline-primary ml-auto mr-auto mt-2' 
 
 .mb-3
     = paginate @youtubers
@@ -35,13 +31,14 @@
                     td= youtuber.due*/
 
 - @youtubers.each do |youtuber|
-    div class='box clearfix border rounded m-1 d-flex align-items-center'
-        = image_tag youtuber.icon.url || "/noimage.jpg", class: 'float-left rounded-circle col-1'
-        span class="float-left text-truncate col-3" = link_to youtuber.name, youtuber_path(youtuber)
-        span class='due_and_number float-left col-3 d-flex align-items-center'
-            span
-                span = "期限: #{youtuber.due}"
+    div class='container'
+        div class='box border rounded m-1 p-1 row d-flex align-items-center'
+            div class='col-sm-4 row d-flex align-items-center'
+                = image_tag youtuber.icon.url || "/noimage.jpg", class: 'rounded-circle col-3 p-1'
+                div class="text-truncate col-9" = link_to youtuber.name, youtuber_path(youtuber)
+            div class='due_and_number col-sm-3 d-flex align-items-center'
+                = "期限: #{youtuber.due}"
                 br
-                span = "投稿: #{youtuber.ideas.count}件"
-        span class="float-left text-truncate col-5" = youtuber.title 
+                = "投稿: #{youtuber.ideas.count}件"
+            div class="text-truncate col-sm-5" = youtuber.title 
 

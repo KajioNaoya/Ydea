@@ -15,11 +15,11 @@
         tr
             th= YouTuber.human_attribute_name(:due)
             td= youtuber.due
-div class='d-flex flex-column'
+div class='d-flex flex-column info-box'
     - if youtuber.banner.present?
         div class='banner-box col-12'
             = image_tag youtuber.banner.url, class: 'banner'
-    div class='p-3 d-flex info-box'
+    div class='p-3 d-flex'
         = link_to "https://www.youtube.com/channel/#{youtuber.channel_id}", target: "_blank", class: 'col-2'
             = image_tag youtuber.icon.url || "/noimage.jpg", class: 'rounded-circle', width: '100%'
         div class='d-flex flex-column justify-content-between p-3'

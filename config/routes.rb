@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   root to: 'youtubers#index'
 
   resources :youtubers
-  resource :user, only: [:show]
+  resource :user, only: [:show, :update]
   resources :ideas do
     resources :likes, only: [:create, :destroy]
   end
