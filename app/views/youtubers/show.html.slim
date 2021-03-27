@@ -1,6 +1,3 @@
-.nav.justify-content-end
- = link_to '一覧', youtubers_path, class: 'nav-link'
-
 = render partial: "youtuber_info", locals: {youtuber: @youtuber}
 
 div class="input_area"
@@ -43,18 +40,4 @@ div class="input_area"
     = page_entries_info @ideas
 
 - @ideas.each do |idea|
-    div class='border m-1'
-        div class='d-flex p-2'
-            h4 class='col-8' = idea.title
-            div class='d-flex col-4'
-                span id="fav-count#{idea.id}" = idea.liked_users.count 
-                - if user_signed_in?
-                    - if idea.user == current_user 
-                        = link_to "編集", edit_idea_path(idea), class: 'btn btn-primary' 
-                        = link_to "削除", idea, method: :delete, data: { confirm: "削除します。よろしいですか？"}, class: 'btn btn-danger' 
-                    - else 
-                        = link_to fa_icon("heart"), idea_like_path(idea), remote: true, method: :delete, style: (current_user.already_liked?(idea) ? 'display:inline' : 'display:none'), id: "cancel_fav#{idea.id}", class: 'fav'
-                        = link_to fa_icon("heart-o"), idea_likes_path(idea), remote: true, method: :post, style: (current_user.already_liked?(idea) ? 'display:none' : 'display:inline'), id: "fav#{idea.id}", class: 'fav'
-                - else 
-                    = link_to fa_icon("heart-o"), idea_likes_path(idea), method: :post, style: 'display:inline', id: "fav#{idea.id}", class: 'fav'
-        p class='p-2' = idea.detail
+    = render partial: "idea_view", locals: {idea: idea}

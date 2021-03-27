@@ -3,7 +3,7 @@ div.text-right.p-1
     p= current_user.email
   - else 
     p ゲスト
-div.text-right
+div.text-right.text-nowrap
   - if user_signed_in?
     = link_to  "ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-primary mr-3 mb-3'
     = link_to  "マイページ", user_path, class: 'btn btn-primary mr-3 mb-3'

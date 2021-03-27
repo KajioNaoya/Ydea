@@ -15,7 +15,7 @@
         tr
             th= YouTuber.human_attribute_name(:due)
             td= youtuber.due
-div class='d-flex flex-column info-box'
+div class='d-flex flex-column info-box mt-2'
     - if youtuber.banner.present?
         div class='banner-box col-12'
             = image_tag youtuber.banner.url, class: 'banner'
