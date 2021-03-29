@@ -35,7 +35,7 @@
         div class='box border rounded m-1 p-1 row d-flex align-items-center'
             div class='col-sm-4 row d-flex align-items-center'
                 = image_tag youtuber.icon.url || "/noimage.jpg", class: 'rounded-circle col-3 p-1'
-                div class="text-truncate col-9" = link_to youtuber.name, youtuber_path(youtuber)
+                p class="text-truncate col-9 name-text" = link_to youtuber.name, youtuber_path(youtuber)
             div class='due_and_number col-sm-3 d-flex align-items-center'
                 = "期限: #{youtuber.due}"
                 br

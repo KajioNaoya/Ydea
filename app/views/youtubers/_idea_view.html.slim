@@ -2,7 +2,7 @@ div class='border m-1'
         div class='d-flex p-2'
             h4 class='col-8' = idea.title
             div class='fav-box col-4'
-                span id="fav-count#{idea.id}" = idea.liked_users.count 
+                span id="fav-count#{idea.id}" class='fav-text' = idea.liked_users.count 
                 - if user_signed_in?
                     - if idea.user == current_user 
                         = link_to "編集", edit_idea_path(idea), class: 'btn btn-primary ml-2' 
@@ -11,5 +11,5 @@ div class='border m-1'
                         = link_to fa_icon("heart"), idea_like_path(idea), remote: true, method: :delete, style: (current_user.already_liked?(idea) ? 'display:inline' : 'display:none'), id: "cancel_fav#{idea.id}", class: 'fav ml-2'
                         = link_to fa_icon("heart-o"), idea_likes_path(idea), remote: true, method: :post, style: (current_user.already_liked?(idea) ? 'display:none' : 'display:inline'), id: "fav#{idea.id}", class: 'fav ml-2'
                 - else 
-                    = link_to fa_icon("heart-o"), idea_likes_path(idea), method: :post, style: 'display:inline', id: "fav#{idea.id}", class: 'fav ml-2'
-        p class='p-2' = idea.detail
+                    = link_to fa_icon("heart-o"), idea_likes_path(idea), method: :post, style: 'display:inline', id: "fav#{idea.id}", class: 'fav fav-text ml-2'
+        p class='p-2 pl-4' = idea.detail

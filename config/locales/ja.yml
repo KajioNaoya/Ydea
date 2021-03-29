@@ -11,6 +11,7 @@ ja:
       idea:
         title: タイトル
         detail: 説明
+        you_tuber: ユーチューバー
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
