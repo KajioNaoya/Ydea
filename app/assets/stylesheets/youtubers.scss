@@ -2,6 +2,18 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$breakpoints: (
+  'sm': 'screen and (min-width: 576px)', //540が元
+  'md': 'screen and (min-width: 720px)',
+  'lg': 'screen and (min-width: 960px)',
+  'xl': 'screen and (min-width: 1140px)',
+) !default;
+
+@mixin mq($breakpoint: md) {
+    @media #{map-get($breakpoints, $breakpoint)} {
+      @content;
+    }
+}
 
 .box {
     background-color: rgb(241, 221, 195);
@@ -21,6 +33,13 @@
      }
 }
 
+.name-text{
+    font-size: 1.5rem;
+    @include mq(sm) {
+        font-size: 1rem;
+    };
+}
+
 .info-box {
    background-color: rgb(252, 236, 217);
 }
@@ -28,6 +47,8 @@
 .info-textbox {
     min-width: 0px;
     max-width: 100%;
+    padding-top: 0px;
+    padding-bottom: 0px;
 }
 
 .detail {
@@ -43,5 +64,9 @@
 }
 
 .fav-box {
-    line-height: 40px;
+    line-height: 2.3;
+}
+
+.fav-text {
+    font-size: 1.2rem;
 }

@@ -20,10 +20,13 @@ nav.navbar.navbar-expand-md.navbar-light.bg-light
             li.nav-item
                 a.nav-link href="#"  ▶お問い合わせ
 
-    div.d-flex.align-items-center
+    div.d-flex.align-items-center width="100%"
         div.text-right
         - if user_signed_in?
-            p.m-3.text-nowrap = current_user.email
+            - if current_user.name.present?
+                p.m-3.text-nowrap = current_user.name
+            - else 
+                p.m-3.text-nowrap 未設定
         - else 
             p.m-3.text-nowrap ゲスト
         div.text-right
