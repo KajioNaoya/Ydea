@@ -22,7 +22,12 @@
 }
 
 .info-box {
-   background-color: azure;
+   background-color: rgb(252, 236, 217);
+}
+
+.info-textbox {
+    min-width: 0px;
+    max-width: 100%;
 }
 
 .detail {
@@ -30,6 +35,13 @@
 }
 
 .input_area{
-    background-color: bisque;
+    border-style: solid;
+    border-radius: 3px;
+    border-color: rgb(114, 79, 36);
     padding: 10px;
+    margin: 10px;
+}
+
+.fav-box {
+    line-height: 40px;
 }

@@ -15,18 +15,19 @@
         tr
             th= YouTuber.human_attribute_name(:due)
             td= youtuber.due
-div class='d-flex flex-column info-box mt-2'
+div class='d-flex flex-column container info-box mt-2'
     - if youtuber.banner.present?
         div class='banner-box col-12'
             = image_tag youtuber.banner.url, class: 'banner'
     div class='p-3 d-flex'
-        = link_to "https://www.youtube.com/channel/#{youtuber.channel_id}", target: "_blank", class: 'col-2'
+        = link_to "https://www.youtube.com/channel/#{youtuber.channel_id}", target: "_blank", class: 'col-md-2 col-4 p-0'
             = image_tag youtuber.icon.url || "/noimage.jpg", class: 'rounded-circle', width: '100%'
-        div class='d-flex flex-column justify-content-between p-3'
+        div class='info-textbox d-flex flex-column justify-content-between col-8 col-md-10 col-lg-7 p-3'
             = link_to "https://www.youtube.com/channel/#{youtuber.channel_id}"
                 h3 = youtuber.name
             h4 class='' = youtuber.title
-        p class='ml-auto' = "掲載期限：#{youtuber.due}"
+            p class='ml-auto mb-auto d-block d-lg-none' = "掲載期限：#{youtuber.due}"
+        p class='ml-auto d-none d-lg-block' = "掲載期限：#{youtuber.due}"
         
     p class='p-3 pl-5 detail' = youtuber.detail
     
