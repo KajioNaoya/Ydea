@@ -20,9 +20,9 @@ div class='d-flex flex-column container info-box mt-2'
         div class='banner-box col-12'
             = image_tag youtuber.banner.url, class: 'banner'
     div class='p-3 d-flex'
-        = link_to "https://www.youtube.com/channel/#{youtuber.channel_id}", target: "_blank", class: 'col-md-2 col-4 p-0'
+        = link_to "https://www.youtube.com/channel/#{youtuber.channel_id}", target: "_blank", class: 'col-md-2 col-3 p-0'
             = image_tag youtuber.icon.url || "/noimage.jpg", class: 'rounded-circle', width: '100%'
-        div class='info-textbox d-flex flex-column justify-content-between col-8 col-md-10 col-lg-7 p-3'
+        div class='info-textbox d-flex flex-column justify-content-between col-9 col-md-10 col-lg-7 p-3'
             = link_to "https://www.youtube.com/channel/#{youtuber.channel_id}"
                 h3 class='fs-15' = youtuber.name
             h4 class='fs-15' = youtuber.title

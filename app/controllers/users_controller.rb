@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
-    @ideas = @user.ideas.recent
+    @ideas = @user.ideas.recent.page(params[:page])
   end
 
   def update

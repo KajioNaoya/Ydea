@@ -1,11 +1,22 @@
-= form_with model: @user, local: true do |f|
-    .form-group
+fieldset class="user-info mb-3" 
+    legend class="user-info-legend" ユーザー情報
+  
+    = form_with model: @user, local: true do |f|
         = f.label :name
-        = f.text_field :name, class: 'form-control'
-    = f.submit "保存", class: 'btn btn-primary'
-p = @user.email
+        div class="column show-name-form"
+            p class="m-2" = @user.name
+            p class="btn btn-primary m-2 edit-button" 編集 
+        div class="column edit-name-form"
+            = f.text_field :name, class: 'form-control m-2'
+            = f.submit "保存", class: 'btn btn-primary m-2'
+
+    p メールアドレス
+    p class="m-2" = @user.email
 
 h3 投稿したアイデア一覧
+.mb-3
+    = paginate @ideas
+    = page_entries_info @ideas
 .mb-3
 table.table.table-hover
     thead.thead-default
