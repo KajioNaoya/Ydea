@@ -1,0 +1,12 @@
+div class='border m-1'
+        h3 class="m-2"
+            u = idea.you_tuber.name
+        div class='d-flex p-2'
+            h4 class='col-8' = idea.title
+            p id="fav-count#{idea.id}" class='fav-text text-nowrap p-2'
+                span class="mr-2" = fa_icon("heart-o")
+                span = idea.liked_users.count
+            div class='fav-box'
+                = link_to "編集", edit_idea_path(idea), class: 'btn btn-primary ml-2' 
+                = link_to "削除", idea, method: :delete, data: { confirm: "削除します。よろしいですか？"}, class: 'btn btn-danger ml-2' 
+        p class='p-2 pl-4' = idea.detail

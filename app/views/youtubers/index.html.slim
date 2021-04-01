@@ -37,8 +37,7 @@
                 = image_tag youtuber.icon.url || "/noimage.jpg", class: 'rounded-circle col-3 p-1'
                 p class="text-truncate col-9 name-text" = link_to youtuber.name, youtuber_path(youtuber)
             div class='due_and_number col-sm-3 d-flex align-items-center'
+                .mr-auto = "投稿: #{youtuber.ideas.count}件"
                 = "期限: #{youtuber.due}"
-                br
-                = "投稿: #{youtuber.ideas.count}件"
-            div class="text-truncate col-sm-5" = youtuber.title 
+            p class="text-truncate col-sm-5" = youtuber.title 
 

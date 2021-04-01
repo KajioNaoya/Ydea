@@ -1,8 +1,8 @@
 div class='border m-1'
         div class='d-flex p-2'
             h4 class='col-8' = idea.title
-            div class='fav-box col-4'
-                span id="fav-count#{idea.id}" class='fav-text' = idea.liked_users.count 
+            span id="fav-count#{idea.id}" class='fav-text m-0' = idea.liked_users.count 
+            div class='fav-box'
                 - if user_signed_in?
                     - if idea.user == current_user 
                         = link_to "編集", edit_idea_path(idea), class: 'btn btn-primary ml-2' 

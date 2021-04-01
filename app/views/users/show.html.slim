@@ -17,8 +17,8 @@ h3 投稿したアイデア一覧
 .mb-3
     = paginate @ideas
     = page_entries_info @ideas
-.mb-3
-table.table.table-hover
+/.mb-3
+/table.table.table-hover
     thead.thead-default
         tr
             th= Idea.human_attribute_name(:you_tuber)
@@ -33,3 +33,5 @@ table.table.table-hover
                     td 
                         = link_to "編集", edit_idea_path(idea), class: 'btn btn-primary text-nowrap' 
                         = link_to "削除", idea, method: :delete, data: { confirm: "削除します。よろしいですか？"}, class: 'btn btn-danger text-nowrap' 
+- @ideas.each do |idea|
+    = render partial: "my_idea_view", locals: {idea: idea} 
