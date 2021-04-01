@@ -12,19 +12,19 @@ class ApplicationController < ActionController::Base
 
     def after_sign_in_path_for(resource)
         logger.debug "sign_in_for呼ばれた"
-        if (session[:previous_url] == root_path)
-          super
-        else
-          session[:previous_url] || root_path
-        end
+        #if (session[:previous_url] == root_path)
+         # super
+        #else
+        session[:previous_url] || root_path
+        #end
     end
 
     def after_sign_out_path_for(resource)
-        logger.debug "sign_out_for呼ばれた"
-        if (session[:previous_url] == root_path)
-          super
-        else
-          session[:previous_url] || root_path
-        end
+        #logger.debug "sign_out_for呼ばれた"
+        #if (session[:previous_url] == root_path)
+        #  super
+        #else
+        session[:previous_url] || root_path
+        #end
     end
 end
