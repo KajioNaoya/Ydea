@@ -1,5 +1,4 @@
 class YoutubersController < ApplicationController
-  #before_action :authenticate_user!
   layout 'standard_header'
 
   def index
