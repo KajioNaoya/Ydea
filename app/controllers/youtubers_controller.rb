@@ -1,4 +1,5 @@
 class YoutubersController < ApplicationController
+  skip_before_action :authenticate_user_from_token!, raise: false
   layout 'standard_header'
 
   def index
