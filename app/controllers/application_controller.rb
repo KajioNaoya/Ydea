@@ -10,6 +10,10 @@ class ApplicationController < ActionController::Base
         end
     end
 
+    def after_sign_up_path_for(resource)
+        root_path
+    end
+
     def after_sign_in_path_for(resource)
         logger.debug "sign_in_for呼ばれた"
         #if (session[:previous_url] == root_path)
